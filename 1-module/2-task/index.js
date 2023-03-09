@@ -11,7 +11,12 @@ function print(text) {
  */
 function isValid(name) {
   // ваш код...
-}
+  function isValid(name) 
+  name !== null && name.length >= 4 && name.includes(" ") {
+    return true;
+  } else {
+    return false;
+  }
 
 function sayHello() {
   let userName = prompt('Введите ваше имя');
