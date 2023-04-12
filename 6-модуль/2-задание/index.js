@@ -1,6 +1,8 @@
+import createElement from '../../assets/lib/create-element.js';
+
 export default class ProductCard {
   constructor(product) {
-this.elem = this.render(product);
+    this.elem = this.render(product);
     this.button = this.elem.querySelector('.card__button');
     this.product = product;
     this.id = product.id;
@@ -35,3 +37,4 @@ this.elem = this.render(product);
     }
   }
 }
+
