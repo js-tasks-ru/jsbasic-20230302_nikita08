@@ -1,9 +1,7 @@
 function camelize(str) {
- function camelize(str) {
-  return str
-  .split('-')
-  .map((word, index)=>index ==0? word : word[0].
-  toUpperCase() + word.sloce(1))
-  .join('');
-} // ваш код...
+  let arr = str.split('-');
+	  for (let i = 1; i < arr.length; i++) {
+		  arr[i] = arr[i].slice(0, 1).toUpperCase() + arr[i].slice(1);		  
+	  }
+	  return arr.join('');
 }
