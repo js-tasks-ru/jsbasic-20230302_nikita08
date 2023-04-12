@@ -1,28 +1,30 @@
 function highlight(table) {
-  for (let tr of table.children[1].rows) {
-  let available = tr.cells[3];
-    if(available.hasAttribute('data - available'))
-      switch (available.dataset.available) {
-        case 'true':
-          tr.classList.add("available");
-          break;
-        case 'false':
-          tr.classList.add("unavailable");
-      }
-    else
-      tr.hidden = true;
-    
-    let gender = tr.cells[2].textContent;
-        switch (gender) {
-            case "m":
-                tr.classList.add("male");
-                break;
-            case "f":
-                tr.classList.add("female");
-        }
-    let age = +tr.cells[1].textContent;
-        if (age < 18) tr.style.textDecoration = "line-through";
-  }
+    let trs = table.rows;  
+
+    for (let i = 0; i < trs.length; i++) {
+		let tds = trs[i].querySelectorAll('td');
+
+		for (let j = 0; j < tds.length; j++) {
+			if (tds[j].dataset.available === 'true') {
+				trs[i].classList.add('available');
+			} else if (tds[j].dataset.available === 'false') {
+				trs[i].classList.add('unavailable');
+            }
+            
+            if (tds[3].dataset.available === undefined){
+				trs[i].hidden = true;
+			}
+
+			if (tds[j].innerHTML == 'f') {
+				trs[i].classList.add('female');
+			} else if (tds[j].innerHTML == 'm') {
+				trs[i].classList.add('male');
+			}
+			
+			if (tds[1].innerHTML < 18){
+				trs[i].style.textDecoration = 'line-through';
+			}
+	
+		}
+    }
 }
-let table = document.querySelector(".js-teachers");
-highlight(table);
